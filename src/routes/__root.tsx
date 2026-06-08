@@ -11,6 +11,7 @@ const orgSchema = {
   "@type": "Organization",
   name: site.name,
   url: site.domain,
+  logo: `${site.domain}/assets/logo/slice-logo-mark-512.png`,
   slogan: site.tagline,
   description: site.description,
   email: site.email,
@@ -28,8 +29,20 @@ export const Route = createRootRoute({
     ],
     links: [
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
-      { rel: "apple-touch-icon", href: "/logo192.png" },
+      { rel: "icon", href: "/favicon.ico", sizes: "any" },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        href: "/assets/favicon/favicon-32x32.png",
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        href: "/assets/favicon/favicon-16x16.png",
+      },
+      { rel: "apple-touch-icon", href: "/assets/favicon/apple-touch-icon.png" },
       { rel: "manifest", href: "/manifest.json" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {

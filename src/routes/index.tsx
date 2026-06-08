@@ -70,6 +70,10 @@ function Hero() {
             creditors, set settlement targets, save monthly, and negotiate with
             AI scripts and real coaching.
           </p>
+          <p className="rounded-xl border-l-4 border-brand bg-orange-50 px-4 py-3 text-base font-bold leading-snug text-navy-900 sm:text-lg">
+            Never pay fees to a debt settlement company —{" "}
+            <span className="text-brand">settle your own debt with SLICE.</span>
+          </p>
           <div className="flex flex-col gap-3 sm:flex-row">
             <LinkButton to="/pricing" size="lg">
               {cta.start} <ArrowRight className="h-5 w-5" />

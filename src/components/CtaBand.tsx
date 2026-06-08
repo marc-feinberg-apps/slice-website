@@ -1,7 +1,7 @@
 import { Apple, Smartphone } from "lucide-react";
 import { Container } from "./primitives";
 import { LinkButton, AnchorButton } from "./Button";
-import { cta } from "../lib/site";
+import { cta, site } from "../lib/site";
 
 export function CtaBand({
   title = "Take your first bite out of debt today.",
@@ -23,6 +23,9 @@ export function CtaBand({
             </h2>
             <p className="mx-auto mt-4 max-w-xl text-lg text-white/90">
               {subtitle}
+            </p>
+            <p className="mx-auto mt-5 max-w-xl rounded-xl bg-white/15 px-4 py-3 text-base font-bold text-white sm:text-lg">
+              {site.pledge}
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <LinkButton to="/pricing" variant="white" size="lg">

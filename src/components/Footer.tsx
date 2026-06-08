@@ -25,6 +25,9 @@ export function Footer() {
               {site.tagline} The smarter, in-your-control way to resolve debt —
               powered by AI strategy and real coaching.
             </p>
+            <p className="mt-4 text-sm font-bold leading-snug text-navy-900">
+              {site.pledge}
+            </p>
           </div>
 
           <nav aria-label="Footer">

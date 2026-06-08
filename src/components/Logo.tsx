@@ -2,8 +2,9 @@ import { Link } from "@tanstack/react-router";
 import { site } from "../lib/site";
 
 /**
- * The SLICE mark: a bright orange citrus slice with a bite taken out of the
- * top-right edge. Pure SVG so it stays crisp at any size and adds no weight.
+ * The SLICE mark: the official bright orange citrus slice with a bite taken out
+ * of the top-right edge and a juice splash. Rendered from the brand PNG asset
+ * (transparent background, so it sits on light or dark surfaces).
  */
 export function LogoMark({
   className = "",
@@ -13,44 +14,15 @@ export function LogoMark({
   title?: string;
 }) {
   return (
-    <svg
-      viewBox="0 0 64 64"
-      className={className}
-      role="img"
-      aria-label={title}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        {/* The bite: subtract a circle from the top-right of the orange */}
-        <mask id="slice-bite">
-          <rect width="64" height="64" fill="white" />
-          <circle cx="58" cy="10" r="13" fill="black" />
-        </mask>
-        <linearGradient id="slice-grad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#fb923c" />
-          <stop offset="100%" stopColor="#f97316" />
-        </linearGradient>
-      </defs>
-
-      <g mask="url(#slice-bite)">
-        {/* Rind */}
-        <circle cx="30" cy="34" r="26" fill="url(#slice-grad)" />
-        {/* Inner flesh */}
-        <circle cx="30" cy="34" r="20" fill="#ffedd5" />
-        {/* Citrus segments */}
-        <g stroke="#fb923c" strokeWidth="2.4" strokeLinecap="round">
-          <line x1="30" y1="34" x2="30" y2="14" />
-          <line x1="30" y1="34" x2="30" y2="54" />
-          <line x1="30" y1="34" x2="10" y2="34" />
-          <line x1="30" y1="34" x2="50" y2="34" />
-          <line x1="30" y1="34" x2="44.5" y2="19.5" />
-          <line x1="30" y1="34" x2="15.5" y2="48.5" />
-          <line x1="30" y1="34" x2="15.5" y2="19.5" />
-          <line x1="30" y1="34" x2="44.5" y2="48.5" />
-        </g>
-        <circle cx="30" cy="34" r="3.4" fill="#f97316" />
-      </g>
-    </svg>
+    <img
+      src="/assets/logo/slice-logo-mark-512.png"
+      alt={title}
+      className={`object-contain ${className}`}
+      width={512}
+      height={512}
+      loading="eager"
+      decoding="async"
+    />
   );
 }
 
