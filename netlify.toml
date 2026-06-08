@@ -1,0 +1,17 @@
+# Netlify deployment config for SLICE (TanStack Start + Vite).
+# SSR is handled by @netlify/vite-plugin-tanstack-start, which turns the
+# server build into a Netlify serverless function during `vite build`.
+
+[build]
+  command = "vite build"
+  publish = "dist/client"
+
+[build.environment]
+  # Match the local toolchain (vite 8 / @types/node 22).
+  NODE_VERSION = "22"
+
+# Required environment variables (set these in the Netlify UI, NOT here —
+# they are secrets and must stay out of version control):
+#   SUPABASE_URL
+#   SUPABASE_SERVICE_ROLE_KEY
+# Netlify dashboard → Site configuration → Environment variables.

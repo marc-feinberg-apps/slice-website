@@ -1,4 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
+import { supabaseAdmin } from "#/lib/server/supabase";
 
 export type LeadInput = {
   name: string;
@@ -33,15 +34,18 @@ export const submitLead = createServerFn({ method: "POST" })
   })
   .handler(async ({ data }): Promise<LeadResult> => {
     try {
-      // ---------------------------------------------------------------------
-      // TODO: connect a real backend here. For example:
-      //   await supabase.from("leads").insert(data)
-      //   await resend.emails.send({ to: site.email, subject: ..., html: ... })
-      // ---------------------------------------------------------------------
-      console.log("[SLICE lead]", {
-        ...data,
-        at: new Date().toISOString(),
+      const { error } = await supabaseAdmin.from("leads").insert({
+        name: data.name,
+        email: data.email,
+        intent: data.intent,
+        message: data.message || null,
       });
+
+      if (error) {
+        console.error("[SLICE lead] insert failed", error);
+        return { ok: false, error: "Something went wrong. Please try again." };
+      }
+
       return { ok: true };
     } catch (err) {
       console.error("[SLICE lead] failed", err);

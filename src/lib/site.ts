@@ -5,15 +5,23 @@
 export const site = {
   name: "SLICE",
   tagline: "Reducing your debt one bite at a time.",
-  domain: "https://getslice.app",
+  domain: "https://slice.marcfeinberg.com",
   description:
     "SLICE is the debt resolution app that helps you organize creditors, calculate settlement targets, build a monthly savings plan, generate AI negotiation scripts, and book coaching — without paying a settlement company 25% of your debt.",
-  email: "support@getslice.app",
+  email: "Marc@MarcFeinberg.com",
   founder: "Marc Feinberg",
   social: {
     instagram: "https://instagram.com/getslice.app",
     tiktok: "https://tiktok.com/@getslice.app",
     linkedin: "https://linkedin.com/company/getslice",
+  },
+  /** Legal entity details — fills placeholders in the /docs legal documents. */
+  legal: {
+    businessName: "Coach Marc LLC",
+    address: "2007 Cove Ln., North Palm Beach, FL 33408",
+    state: "Florida",
+    venue: "Palm Beach County, Florida",
+    effectiveDate: "Coming soon",
   },
 } as const;
 
