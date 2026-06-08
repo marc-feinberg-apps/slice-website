@@ -149,7 +149,7 @@ function Field({
       <label htmlFor={id} className="mb-2 block text-sm font-bold text-navy-900">
         {label}
       </label>
-      <div className="flex items-center rounded-xl border-2 border-orange-100 bg-orange-50/40 px-4 py-1 focus-within:border-brand">
+      <div className="flex items-center rounded-xl border-2 border-orange-100 bg-orange-50/40 px-4 py-1 transition-colors focus-within:border-brand">
         {prefix ? (
           <span className="text-lg font-bold text-muted">{prefix}</span>
         ) : null}
@@ -161,7 +161,7 @@ function Field({
           step={step}
           value={Number.isNaN(value) ? "" : value}
           onChange={(e) => onChange(Number(e.target.value))}
-          className="w-full bg-transparent px-2 py-2.5 text-lg font-bold text-navy-900 outline-none"
+          className="w-full bg-transparent px-2 py-2.5 text-lg font-bold text-navy-900 outline-none! focus:outline-none! focus-visible:outline-none!"
         />
       </div>
     </div>
