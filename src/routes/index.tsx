@@ -108,7 +108,7 @@ function ProblemSolution() {
   const them = [
     "Charge ~25% of your enrolled debt",
     "You hand over control of your money",
-    "Fees whether or not they settle",
+    "Fees whether or not they settle favorably",
     "One-size-fits-all process",
   ];
   const us = [
