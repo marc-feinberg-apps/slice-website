@@ -71,8 +71,8 @@ export function PricingCards() {
             price = "$0";
             cadence = "forever";
           } else if (yearly) {
-            price = `$${Math.round(plan.monthly * 12 * (1 - YEARLY_DISCOUNT))}`;
-            cadence = "per year";
+            price = `$${(plan.monthly * (1 - YEARLY_DISCOUNT)).toFixed(2)}`;
+            cadence = "per month";
           } else {
             price = `$${plan.monthly}`;
             cadence = "per month";
@@ -112,7 +112,7 @@ export function PricingCards() {
                     highlight ? "text-orange-300" : "text-brand-dark"
                   }`}
                 >
-                  Paid in full · save 20%
+                  Billed annually at ${Math.round(plan.monthly * 12 * (1 - YEARLY_DISCOUNT))} · save 20%
                 </p>
               ) : null}
               <p

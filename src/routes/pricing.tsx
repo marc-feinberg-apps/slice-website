@@ -14,29 +14,39 @@ export const Route = createFileRoute("/pricing")({
       title: "Pricing",
       path: "/pricing",
       description:
-        "SLICE pricing: Free, Silver, Gold, and Platinum. Start free with the dashboard, calculator, and timeline. Upgrade for AI negotiation, coaching, and done-with-you creditor calls.",
+        "SLICE pricing: Free, Silver, Gold, and Platinum. Start free with settlement readiness, the calculator, what-if simulator, savings planner, call logging, and snowball timeline. Upgrade for AI negotiation, coaching, and done-with-you creditor calls.",
     }),
   component: Pricing,
 });
 
+/** A cell is either included/excluded (boolean) or a literal value such as a quota. */
+type CellValue = boolean | string;
+
 type Row = {
   label: string;
-  free: boolean;
-  silver: boolean;
-  gold: boolean;
-  platinum: boolean;
+  free: CellValue;
+  silver: CellValue;
+  gold: CellValue;
+  platinum: CellValue;
 };
 
 const matrix: Row[] = [
   { label: "Debt dashboard", free: true, silver: true, gold: true, platinum: true },
-  { label: "Creditor list & tracking", free: true, silver: true, gold: true, platinum: true },
+  { label: "Creditor tracking & negotiation status", free: true, silver: true, gold: true, platinum: true },
   { label: "Credit score tracker", free: true, silver: true, gold: true, platinum: true },
+  { label: "Settlement readiness & next best move", free: true, silver: true, gold: true, platinum: true },
   { label: "Settlement calculator (30–70%)", free: true, silver: true, gold: true, platinum: true },
+  { label: "What-if simulator", free: true, silver: true, gold: true, platinum: true },
+  { label: "Savings planner", free: true, silver: true, gold: true, platinum: true },
   { label: "Snowball timeline", free: true, silver: true, gold: true, platinum: true },
   { label: "Budget & savings tracker", free: true, silver: true, gold: true, platinum: true },
+  { label: "Call log & follow-up reminders", free: true, silver: true, gold: true, platinum: true },
+  { label: "Settlement fund tracking", free: true, silver: true, gold: true, platinum: true },
+  { label: "Credit repair checklist", free: true, silver: true, gold: true, platinum: true },
   { label: "AI negotiation strategy", free: false, silver: true, gold: true, platinum: true },
-  { label: "AI customized call scripts", free: false, silver: true, gold: true, platinum: true },
+  { label: "AI call scripts (4 tones)", free: false, silver: true, gold: true, platinum: true },
   { label: "Zest AI Debt Coach", free: false, silver: true, gold: true, platinum: true },
+  { label: "AI requests per tool, daily", free: "—", silver: "30", gold: "100", platinum: "250" },
   { label: "Book: Debt Settlements: Dirty Little Secrets", free: false, silver: true, gold: true, platinum: true },
   { label: "Live weekly Zoom coaching calls", free: false, silver: false, gold: true, platinum: true },
   { label: "Tax advisory booking", free: false, silver: false, gold: true, platinum: true },
@@ -45,7 +55,14 @@ const matrix: Row[] = [
   { label: "Priority founder coaching & support", free: false, silver: false, gold: false, platinum: true },
 ];
 
-function Cell({ on }: { on: boolean }) {
+function Cell({ on }: { on: CellValue }) {
+  if (typeof on === "string") {
+    return (
+      <span className="block text-center text-sm font-bold text-navy-800">
+        {on}
+      </span>
+    );
+  }
   return on ? (
     <Check className="mx-auto h-5 w-5 text-brand" aria-label="Included" />
   ) : (
