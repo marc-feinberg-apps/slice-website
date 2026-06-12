@@ -13,5 +13,6 @@
 # Required environment variables (set these in the Netlify UI, NOT here —
 # they are secrets and must stay out of version control):
 #   SUPABASE_URL
-#   SUPABASE_SERVICE_ROLE_KEY
+#   SUPABASE_SERVICE_ROLE_KEY   — privileged reads + signed video URLs
+#   SUPABASE_ANON_KEY           — user sign-in / cookie session (@supabase/ssr)
 # Netlify dashboard → Site configuration → Environment variables.

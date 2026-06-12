@@ -12,12 +12,15 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CoachingRouteImport } from './routes/coaching'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LearnIndexRouteImport } from './routes/learn/index'
+import { Route as LearnVideoIdRouteImport } from './routes/learn/$videoId'
 import { Route as AuthConfirmedRouteImport } from './routes/auth/confirmed'
 
 const TermsRoute = TermsRouteImport.update({
@@ -33,6 +36,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HowItWorksRoute = HowItWorksRouteImport.update({
@@ -65,6 +73,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LearnIndexRoute = LearnIndexRouteImport.update({
+  id: '/learn/',
+  path: '/learn/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearnVideoIdRoute = LearnVideoIdRouteImport.update({
+  id: '/learn/$videoId',
+  path: '/learn/$videoId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthConfirmedRoute = AuthConfirmedRouteImport.update({
   id: '/auth/confirmed',
   path: '/auth/confirmed',
@@ -78,10 +96,13 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/auth/confirmed': typeof AuthConfirmedRoute
+  '/learn/$videoId': typeof LearnVideoIdRoute
+  '/learn/': typeof LearnIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -90,10 +111,13 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/auth/confirmed': typeof AuthConfirmedRoute
+  '/learn/$videoId': typeof LearnVideoIdRoute
+  '/learn': typeof LearnIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -103,10 +127,13 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
   '/how-it-works': typeof HowItWorksRoute
+  '/login': typeof LoginRoute
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
   '/auth/confirmed': typeof AuthConfirmedRoute
+  '/learn/$videoId': typeof LearnVideoIdRoute
+  '/learn/': typeof LearnIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -117,10 +144,13 @@ export interface FileRouteTypes {
     | '/faq'
     | '/features'
     | '/how-it-works'
+    | '/login'
     | '/pricing'
     | '/privacy'
     | '/terms'
     | '/auth/confirmed'
+    | '/learn/$videoId'
+    | '/learn/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -129,10 +159,13 @@ export interface FileRouteTypes {
     | '/faq'
     | '/features'
     | '/how-it-works'
+    | '/login'
     | '/pricing'
     | '/privacy'
     | '/terms'
     | '/auth/confirmed'
+    | '/learn/$videoId'
+    | '/learn'
   id:
     | '__root__'
     | '/'
@@ -141,10 +174,13 @@ export interface FileRouteTypes {
     | '/faq'
     | '/features'
     | '/how-it-works'
+    | '/login'
     | '/pricing'
     | '/privacy'
     | '/terms'
     | '/auth/confirmed'
+    | '/learn/$videoId'
+    | '/learn/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -154,10 +190,13 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   FeaturesRoute: typeof FeaturesRoute
   HowItWorksRoute: typeof HowItWorksRoute
+  LoginRoute: typeof LoginRoute
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
   AuthConfirmedRoute: typeof AuthConfirmedRoute
+  LearnVideoIdRoute: typeof LearnVideoIdRoute
+  LearnIndexRoute: typeof LearnIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -181,6 +220,13 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/how-it-works': {
@@ -225,6 +271,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/learn/': {
+      id: '/learn/'
+      path: '/learn'
+      fullPath: '/learn/'
+      preLoaderRoute: typeof LearnIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learn/$videoId': {
+      id: '/learn/$videoId'
+      path: '/learn/$videoId'
+      fullPath: '/learn/$videoId'
+      preLoaderRoute: typeof LearnVideoIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth/confirmed': {
       id: '/auth/confirmed'
       path: '/auth/confirmed'
@@ -242,10 +302,13 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   FeaturesRoute: FeaturesRoute,
   HowItWorksRoute: HowItWorksRoute,
+  LoginRoute: LoginRoute,
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
   AuthConfirmedRoute: AuthConfirmedRoute,
+  LearnVideoIdRoute: LearnVideoIdRoute,
+  LearnIndexRoute: LearnIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

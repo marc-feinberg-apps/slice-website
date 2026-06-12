@@ -14,7 +14,7 @@ export const Route = createFileRoute("/features")({
       title: "Features",
       path: "/features",
       description:
-        "Creditor tracking, a 30–70% settlement calculator, snowball timeline, AI negotiation strategy and call scripts, Zest AI Debt Coach, credit repair education, and founder coaching — all in SLICE.",
+        "Settlement readiness engine, creditor tracking, a 30–70% settlement calculator, what-if simulator, savings planner, snowball timeline, AI negotiation strategy and call scripts, Zest AI Debt Coach, credit repair tools, and founder coaching — all in SLICE.",
     }),
   component: Features,
 });
