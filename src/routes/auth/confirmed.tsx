@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { CheckCircle2, AlertTriangle, ArrowRight, Smartphone } from "lucide-react";
 import { seo } from "../../lib/seo";
 import { Container } from "../../components/primitives";
-import { LogoMark } from "../../components/Logo";
 import { LinkButton, AnchorButton } from "../../components/Button";
 import { site } from "../../lib/site";
 
@@ -114,14 +113,6 @@ function AuthConfirmed() {
 
       <Container className="relative">
         <div className="mx-auto w-full max-w-xl">
-          {/* Brand mark above the card, consistent with the rest of the site */}
-          <div className="mb-7 flex flex-col items-center gap-3">
-            <LogoMark className="h-14 w-14" />
-            <span className="text-2xl font-extrabold tracking-tight text-navy-900">
-              SL<span className="text-brand">I</span>CE
-            </span>
-          </div>
-
           <div className="rounded-[1.5rem] border border-orange-100 bg-white p-8 text-center shadow-soft sm:p-10">
             {status === "checking" ? <CheckingState /> : null}
             {status === "success" ? <SuccessState /> : null}
