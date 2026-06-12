@@ -8,11 +8,14 @@ import { LinkButton, AnchorButton } from "../../components/Button";
 import { site } from "../../lib/site";
 
 /**
- * Where the "Open SLICE App" button should send people. For now it points back
- * to the website; when the mobile app ships, swap this for the deep link /
- * universal link (e.g. "slice://" or "https://slice.marcfeinberg.com/app").
+ * Deep link that opens the SLICE mobile app. "slice" is the custom URL scheme
+ * the app registers (app.config.js → scheme: "slice"), and "/auth" is its
+ * sign-in route (app/auth.tsx) — so this drops the user straight on the screen
+ * where they sign in with the account they just confirmed. The app has no
+ * associated-domains / universal links configured, so the custom scheme is the
+ * only way to launch it. (Only resolves on a device with the app installed.)
  */
-const SLICE_APP_URL = "/";
+const SLICE_APP_URL = "slice://auth";
 
 export const Route = createFileRoute("/auth/confirmed")({
   head: () => {
@@ -64,6 +67,24 @@ function AuthConfirmed() {
 
   useEffect(() => {
     const params = readAuthParams();
+
+    // This is a transactional landing page — it only means something when
+    // Supabase sent the user here from an email link, which always carries
+    // auth params (tokens / a code / an error). A bare visit has none, so
+    // there's nothing to confirm: send them to the homepage instead.
+    const hasAuthParams =
+      params.has("access_token") ||
+      params.has("refresh_token") ||
+      params.has("code") ||
+      params.has("type") ||
+      params.has("error") ||
+      params.has("error_code") ||
+      params.has("error_description");
+
+    if (!hasAuthParams) {
+      window.location.replace("/");
+      return;
+    }
 
     // Supabase signals failures with any of these. `error` is the canonical
     // OAuth-style flag; the others appear in different Supabase flows.

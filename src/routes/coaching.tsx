@@ -89,9 +89,11 @@ function Coaching() {
           <div className="reveal">
             <div className="relative overflow-hidden rounded-[1.5rem] border border-orange-100 bg-gradient-to-br from-orange-100 to-orange-50 p-8 shadow-soft">
               <div className="flex items-center gap-4">
-                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-brand text-2xl font-extrabold text-white shadow-soft">
-                  MF
-                </div>
+                <img
+                  src="/assets/marc/marc-portrait.jpeg"
+                  alt="Marc Feinberg"
+                  className="h-20 w-20 rounded-full object-cover shadow-soft"
+                />
                 <div>
                   <p className="text-xl font-extrabold text-navy-900">
                     Marc Feinberg

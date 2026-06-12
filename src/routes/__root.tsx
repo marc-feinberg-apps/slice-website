@@ -6,6 +6,13 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ScrollReveal } from "../components/ScrollReveal";
 
+/**
+ * Inlined verbatim into <head>, so it must be self-contained vanilla JS that is
+ * safe to run before hydration. Only fires on the root path to avoid touching
+ * /auth/confirmed itself or any other route.
+ */
+const AUTH_FRAGMENT_REDIRECT = `(function(){try{var p=location.pathname;if(p!=="/"&&p!=="")return;var s=location.search,h=location.hash;if(/(?:access_token|refresh_token|error_description|error_code|[?&#]error=|[?&#]code=|type=(?:signup|recovery|magiclink|invite|email_change))/.test(s+h)){location.replace("/auth/confirmed"+s+h);}}catch(e){}})();`;
+
 const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -59,6 +66,17 @@ export const Route = createRootRoute({
       {
         type: "application/ld+json",
         children: JSON.stringify(orgSchema),
+      },
+      {
+        // Supabase emails (e.g. the signup-confirmation link from the mobile
+        // app) land on the Site URL root with the auth result in the URL
+        // fragment — e.g. "/#access_token=…&type=signup" or "/#error=…". The
+        // landing page can't read that fragment server-side, so without this
+        // the user just sees the homepage. This blocking head script runs
+        // before paint: on a bare "/" load carrying those params it forwards
+        // to /auth/confirmed (preserving the hash + query) so the proper
+        // "email confirmed" page handles it — no flash of the homepage.
+        children: AUTH_FRAGMENT_REDIRECT,
       },
     ],
   }),
