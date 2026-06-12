@@ -2,8 +2,9 @@ import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { Button } from "./Button";
 import { submitLead } from "../lib/server/waitlist";
+import { toast, toErrorMessage } from "../lib/toast";
 
-type Status = "idle" | "submitting" | "success" | "error";
+type Status = "idle" | "submitting" | "success";
 
 export function LeadForm({
   intent = "waitlist",
@@ -17,14 +18,12 @@ export function LeadForm({
   dark?: boolean;
 }) {
   const [status, setStatus] = useState<Status>("idle");
-  const [error, setError] = useState("");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const fd = new FormData(form);
     setStatus("submitting");
-    setError("");
 
     try {
       const res = await submitLead({
@@ -35,18 +34,37 @@ export function LeadForm({
           message: String(fd.get("message") ?? ""),
         },
       });
-      if (res.ok) {
+      if (res?.ok) {
         setStatus("success");
         form.reset();
+        toast.success(
+          intent === "contact" ? "Message sent! ✅" : "You're on the list! 🎉",
+          {
+            description:
+              intent === "contact"
+                ? "We'll get back to you within 2 business days."
+                : "We'll email you the moment SLICE is ready.",
+          },
+        );
       } else {
-        setStatus("error");
-        setError(res.error);
+        setStatus("idle");
+        toast.error(
+          intent === "contact"
+            ? "Couldn't send your message"
+            : "Couldn't join the waitlist",
+          {
+            description: toErrorMessage(res?.error),
+            action: { label: "Try again", onClick: () => form.requestSubmit() },
+          },
+        );
       }
     } catch (err) {
-      setStatus("error");
-      setError(
-        err instanceof Error ? err.message : "Something went wrong. Try again.",
-      );
+      setStatus("idle");
+      toast.fromError(err, {
+        description: "Check your connection and try again in a moment.",
+        fallback: "Something went wrong",
+        action: { label: "Try again", onClick: () => form.requestSubmit() },
+      });
     }
   }
 
@@ -125,12 +143,6 @@ export function LeadForm({
             className={inputCls}
           />
         </div>
-      ) : null}
-
-      {status === "error" ? (
-        <p className="text-sm font-semibold text-red-600" role="alert">
-          {error}
-        </p>
       ) : null}
 
       <Button

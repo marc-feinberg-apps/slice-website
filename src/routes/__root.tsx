@@ -5,6 +5,7 @@ import { site } from "../lib/site";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ScrollReveal } from "../components/ScrollReveal";
+import { Toaster } from "../components/Toaster";
 
 /**
  * Inlined verbatim into <head>, so it must be self-contained vanilla JS that is
@@ -100,6 +101,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <main id="main">{children}</main>
         <Footer />
         <ScrollReveal />
+        <Toaster />
         <Scripts />
       </body>
     </html>

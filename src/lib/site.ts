@@ -9,7 +9,7 @@ export const site = {
   domain: "https://slice.marcfeinberg.com",
   description:
     "SLICE is the debt resolution app that helps you organize creditors, calculate settlement targets, build a monthly savings plan, generate AI negotiation scripts, and book coaching — without paying a settlement company 25% of your debt.",
-  email: "Marc@MarcFeinberg.com",
+  email: "support@slicemydebt.com",
   founder: "Marc Feinberg",
   social: {
     instagram: "https://instagram.com/getslice.app",

@@ -3,10 +3,10 @@ import { useState } from "react";
 import { Loader2, LogIn, Smartphone } from "lucide-react";
 import { seo } from "../lib/seo";
 import { Container } from "../components/primitives";
-import { LogoMark } from "../components/Logo";
 import { Button, AnchorButton } from "../components/Button";
 import { site } from "../lib/site";
 import { signIn, getCurrentUser } from "#/lib/server/auth";
+import { toast, toErrorMessage } from "../lib/toast";
 
 export const Route = createFileRoute("/login")({
   validateSearch: (search: Record<string, unknown>): { redirect?: string } => ({
@@ -36,31 +36,55 @@ export const Route = createFileRoute("/login")({
 
 function LoginPage() {
   const { redirect: redirectTarget } = Route.useSearch();
-  const [status, setStatus] = useState<"idle" | "submitting" | "error">("idle");
-  const [error, setError] = useState("");
+  const [status, setStatus] = useState<"idle" | "submitting">("idle");
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const fd = new FormData(e.currentTarget);
-    setStatus("submitting");
-    setError("");
-    try {
-      const res = await signIn({
-        data: {
-          email: String(fd.get("email") ?? ""),
-          password: String(fd.get("password") ?? ""),
-        },
+    const email = String(fd.get("email") ?? "").trim();
+    const password = String(fd.get("password") ?? "");
+
+    // Catch obvious gaps before a round-trip so the feedback is instant.
+    if (!email || !password) {
+      toast.error("Enter your email and password", {
+        description: "Both fields are required to sign in.",
       });
-      if (res.ok) {
+      return;
+    }
+
+    setStatus("submitting");
+    try {
+      const res = await signIn({ data: { email, password } });
+
+      // Defensive: a failed round-trip can resolve without our { ok } shape.
+      // Guarding here is what stops the raw "undefined is not an object
+      // (evaluating 'e.ok')" message from ever reaching the user.
+      if (res?.ok) {
+        toast.success("Welcome back! 👋", {
+          description: "Taking you to the academy…",
+          duration: 2000,
+        });
         // Full navigation so the Navbar re-reads the new session on SSR.
         window.location.assign(redirectTarget ?? "/learn");
         return;
       }
-      setStatus("error");
-      setError(res.error);
+
+      setStatus("idle");
+      toast.error("Couldn't sign you in", {
+        description: toErrorMessage(
+          res?.error,
+          "Incorrect email or password. Please try again.",
+        ),
+        action: {
+          label: "Get help",
+          onClick: () => window.location.assign(`mailto:${site.email}`),
+        },
+      });
     } catch (err) {
-      setStatus("error");
-      setError(err instanceof Error ? err.message : "Something went wrong.");
+      setStatus("idle");
+      // toErrorMessage surfaces friendly validator messages ("Please enter a
+      // valid email…") and rewrites network failures, so no raw stack leaks.
+      toast.fromError(err, { fallback: "Sign-in failed. Please try again." });
     }
   }
 
@@ -74,13 +98,6 @@ function LoginPage() {
 
       <Container className="relative">
         <div className="mx-auto w-full max-w-md">
-          <div className="mb-7 flex flex-col items-center gap-3">
-            <LogoMark className="h-14 w-14" />
-            <span className="text-2xl font-extrabold tracking-tight text-navy-900">
-              SL<span className="text-brand">I</span>CE
-            </span>
-          </div>
-
           <div className="rounded-[1.5rem] border border-orange-100 bg-white p-8 shadow-soft sm:p-10">
             <h1 className="text-center text-2xl font-extrabold tracking-tight text-navy-900">
               Welcome back
@@ -124,12 +141,6 @@ function LoginPage() {
                   className={inputCls}
                 />
               </div>
-
-              {status === "error" ? (
-                <p className="text-sm font-semibold text-red-600" role="alert">
-                  {error}
-                </p>
-              ) : null}
 
               <Button
                 type="submit"
