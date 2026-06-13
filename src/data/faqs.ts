@@ -35,7 +35,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "Who is Marc Feinberg?",
-    a: "Marc Feinberg is the founder of SLICE. On Gold and Platinum plans you can book founder coaching and connect with his mastermind, coaching, and tax-advisory network for personalized guidance.",
+    a: "Marc Feinberg is the founder of SLICE. On Gold and Platinum plans you can book founder coaching and connect with his mastermind and coaching network for personalized guidance.",
   },
   {
     q: "How much does SLICE cost?",

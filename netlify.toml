@@ -3,7 +3,9 @@
 # server build into a Netlify serverless function during `vite build`.
 
 [build]
-  command = "vite build"
+  # `pnpm build` runs the prebuild hook (generate-sitemap.mjs) then vite build,
+  # so public/sitemap.xml is regenerated with a fresh <lastmod> on every deploy.
+  command = "pnpm build"
   publish = "dist/client"
 
 [build.environment]

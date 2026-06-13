@@ -259,15 +259,13 @@ function CoachingSection() {
           <p className="mt-4 text-lg leading-relaxed text-muted">
             AI gets you a plan — people get you across the finish line. On Gold
             and Platinum, book coaching with SLICE founder Marc Feinberg and tap
-            his mastermind, coaching, and tax-advisory network for personalized
-            support.
+            his mastermind and coaching network for personalized support.
           </p>
           <ul className="mt-6 space-y-3">
             {[
               "1:1 founder coaching sessions",
               "Mastermind & accountability",
-              "Tax advisory booking",
-              "Platinum: live done-with-you creditor calls",
+              "Platinum: quarterly done-with-you creditor calls",
             ].map((t) => (
               <li key={t} className="flex items-start gap-3 text-navy-800">
                 <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-brand" />

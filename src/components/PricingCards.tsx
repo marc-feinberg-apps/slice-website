@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Check, Sparkles } from "lucide-react";
-import { plans, YEARLY_DISCOUNT } from "../data/pricing";
+import { plans } from "../data/pricing";
 import { LinkButton } from "./Button";
 
 const BOOK_FEATURE = "Copy of our book Debt Settlements: Dirty Little Secrets";
@@ -71,7 +71,7 @@ export function PricingCards() {
             price = "$0";
             cadence = "forever";
           } else if (yearly) {
-            price = `$${(plan.monthly * (1 - YEARLY_DISCOUNT)).toFixed(2)}`;
+            price = `$${plan.yearlyMonthly?.toFixed(2)}`;
             cadence = "per month";
           } else {
             price = `$${plan.monthly}`;
@@ -112,7 +112,7 @@ export function PricingCards() {
                     highlight ? "text-orange-300" : "text-brand-dark"
                   }`}
                 >
-                  Billed annually at ${Math.round(plan.monthly * 12 * (1 - YEARLY_DISCOUNT))} · save 20%
+                  Billed annually at ${plan.yearlyTotal?.toFixed(2)} · save 20%
                 </p>
               ) : null}
               <p

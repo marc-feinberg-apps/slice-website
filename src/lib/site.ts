@@ -6,7 +6,7 @@ export const site = {
   name: "SLICE",
   tagline: "Reducing your debt one bite at a time.",
   pledge: "Never pay fees to a debt settlement company — settle your own debt with SLICE.",
-  domain: "https://slice.marcfeinberg.com",
+  domain: "https://slicemydebt.com",
   description:
     "SLICE is the debt resolution app that helps you organize creditors, calculate settlement targets, build a monthly savings plan, generate AI negotiation scripts, and book coaching — without paying a settlement company 25% of your debt.",
   email: "support@slicemydebt.com",

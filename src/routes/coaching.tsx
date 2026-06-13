@@ -3,7 +3,6 @@ import {
   Star,
   Quote,
   Users,
-  Calculator as CalcIcon,
   PhoneCall,
   Bot,
   Check,
@@ -21,7 +20,7 @@ export const Route = createFileRoute("/coaching")({
       title: "Founder Coaching with Marc Feinberg",
       path: "/coaching",
       description:
-        "Book founder coaching with SLICE's Marc Feinberg. Get mastermind support, tax advisory booking, the Zest AI Debt Coach, and live done-with-you creditor calls on Gold and Platinum.",
+        "Book founder coaching with SLICE's Marc Feinberg. Get mastermind support, the Zest AI Debt Coach, and quarterly done-with-you creditor calls on Gold and Platinum.",
     }),
   component: Coaching,
 });
@@ -42,13 +41,6 @@ const offerings = [
     tier: "Gold & Platinum",
   },
   {
-    icon: CalcIcon,
-    title: "Tax advisory booking",
-    description:
-      "Settled debt can have tax implications. Book time with a tax professional in Marc's network to plan ahead.",
-    tier: "Gold & Platinum",
-  },
-  {
     icon: Bot,
     title: "Zest AI Debt Coach",
     description:
@@ -59,7 +51,7 @@ const offerings = [
     icon: PhoneCall,
     title: "Done-with-you creditor calls",
     description:
-      "On Platinum, get live support on real creditor calls so you never have to negotiate alone.",
+      "On Platinum, get quarterly done-with-you creditor calls to negotiate settlements so you never have to negotiate alone.",
     tier: "Platinum",
   },
   {

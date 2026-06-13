@@ -1,15 +1,28 @@
+import { useEffect, useState } from "react";
 import { Toaster as Sonner } from "sonner";
 
 /**
  * App-wide toast surface. Mounted once in the root document. Styled to match
  * the SLICE brand (rounded cards, soft shadow, orange/navy palette) and tuned
- * for mobile-first UX: toasts land top-center where the thumb isn't covering
- * them, with rich colors + a close button so errors are dismissible.
+ * for UX: on desktop toasts land bottom-right, on mobile they land top-center
+ * where the thumb isn't covering them, with rich colors + a close button so
+ * errors are dismissible.
  */
 export function Toaster() {
+  // `md` breakpoint (768px) — bottom-right on desktop, top on mobile.
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(min-width: 768px)");
+    const update = () => setIsDesktop(mql.matches);
+    update();
+    mql.addEventListener("change", update);
+    return () => mql.removeEventListener("change", update);
+  }, []);
+
   return (
     <Sonner
-      position="top-center"
+      position={isDesktop ? "bottom-right" : "top-center"}
       richColors
       closeButton
       expand

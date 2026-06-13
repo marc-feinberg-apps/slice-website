@@ -42,17 +42,15 @@ const matrix: Row[] = [
   { label: "Budget & savings tracker", free: true, silver: true, gold: true, platinum: true },
   { label: "Call log & follow-up reminders", free: true, silver: true, gold: true, platinum: true },
   { label: "Settlement fund tracking", free: true, silver: true, gold: true, platinum: true },
-  { label: "Credit repair checklist", free: true, silver: true, gold: true, platinum: true },
+  { label: "Credit repair checklist", free: false, silver: false, gold: false, platinum: true },
   { label: "AI negotiation strategy", free: false, silver: true, gold: true, platinum: true },
   { label: "AI call scripts (4 tones)", free: false, silver: true, gold: true, platinum: true },
   { label: "Zest AI Debt Coach", free: false, silver: true, gold: true, platinum: true },
   { label: "AI requests per tool, daily", free: "—", silver: "30", gold: "100", platinum: "250" },
   { label: "Book: Debt Settlements: Dirty Little Secrets", free: false, silver: true, gold: true, platinum: true },
-  { label: "Live weekly Zoom coaching calls", free: false, silver: false, gold: true, platinum: true },
-  { label: "Tax advisory booking", free: false, silver: false, gold: true, platinum: true },
-  { label: "Founder coaching", free: false, silver: false, gold: true, platinum: true },
-  { label: "Live done-with-you creditor calls", free: false, silver: false, gold: false, platinum: true },
-  { label: "Priority founder coaching & support", free: false, silver: false, gold: false, platinum: true },
+  { label: "Weekly Zoom calls for debt-resolution coaching", free: false, silver: false, gold: true, platinum: true },
+  { label: "Quarterly done-with-you creditor calls", free: false, silver: false, gold: false, platinum: true },
+  { label: "Priority founder coaching", free: false, silver: false, gold: false, platinum: true },
 ];
 
 function Cell({ on }: { on: CellValue }) {
