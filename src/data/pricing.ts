@@ -1,16 +1,21 @@
 export type Plan = {
   name: "Free" | "Silver" | "Gold" | "Platinum";
-  /** Monthly price in USD, used to derive both monthly and yearly display prices */
+  /** Standalone month-to-month price in USD. */
   monthly: number;
+  /**
+   * Per-month price shown when the yearly toggle is active. Set from the
+   * App Store yearly price points — not derived from `monthly`, since those
+   * don't multiply exactly to the annual total. Omitted on Free.
+   */
+  yearlyMonthly?: number;
+  /** Total billed once per year. Omitted on Free. */
+  yearlyTotal?: number;
   tagline: string;
   highlight?: boolean;
   cta: string;
   /** What this tier adds on top of the one below it */
   features: string[];
 };
-
-/** Yearly plans are paid in full at a 20% discount — roughly 2 months free. */
-export const YEARLY_DISCOUNT = 0.2;
 
 export const plans: Plan[] = [
   {
@@ -26,12 +31,13 @@ export const plans: Plan[] = [
       "Snowball timeline",
       "Call log & follow-up reminders",
       "Settlement fund tracking",
-      "Credit repair checklist & education",
     ],
   },
   {
     name: "Silver",
-    monthly: 19,
+    monthly: 9.99,
+    yearlyMonthly: 8.0,
+    yearlyTotal: 95.9,
     tagline: "Negotiate like a pro with AI on your side.",
     cta: "Choose Silver",
     features: [
@@ -45,27 +51,31 @@ export const plans: Plan[] = [
   },
   {
     name: "Gold",
-    monthly: 49,
+    monthly: 29.99,
+    yearlyMonthly: 24.99,
+    yearlyTotal: 289,
     tagline: "Add expert humans to your AI toolkit.",
     highlight: true,
     cta: "Choose Gold",
     features: [
       "Everything in Silver",
-      "Live weekly Zoom coaching calls",
-      "Tax advisory booking",
-      "Founder coaching option",
+      "Weekly Zoom calls for debt-resolution coaching and all things financial",
+      "100 AI requests per tool, daily",
     ],
   },
   {
     name: "Platinum",
-    monthly: 99,
+    monthly: 59.99,
+    yearlyMonthly: 48.49,
+    yearlyTotal: 579,
     tagline: "Done-with-you calls and priority access.",
     cta: "Choose Platinum",
     features: [
       "Everything in Gold",
-      "Live done-with-you creditor calls",
+      "Quarterly done-with-you creditor calls to negotiate settlements",
+      "Credit repair checklist & education",
+      "250 AI requests per tool, daily",
       "Priority founder coaching",
-      "Priority support",
     ],
   },
 ];

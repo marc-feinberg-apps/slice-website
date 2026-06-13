@@ -102,14 +102,14 @@ export const features: Feature[] = [
     title: "Credit repair checklist",
     description:
       "A categorized, checkable task list with a progress bar covering reports, disputes, settlements, documentation, monitoring, and planning.",
-    tier: "Free",
+    tier: "Platinum",
   },
   {
     icon: GraduationCap,
     title: "Credit repair education",
     description:
       "Learn how settlements affect your report and the steps to rebuild credit afterward — explained in plain English.",
-    tier: "Free",
+    tier: "Platinum",
   },
   {
     icon: BrainCircuit,
@@ -136,7 +136,7 @@ export const features: Feature[] = [
     icon: UserRoundCheck,
     title: "Founder coaching with Marc Feinberg",
     description:
-      "Book guidance from SLICE founder Marc Feinberg and his network for mastermind, coaching, and tax advisory support.",
+      "Book guidance from SLICE founder Marc Feinberg and his network for mastermind and coaching support.",
     tier: "Gold",
   },
 ];

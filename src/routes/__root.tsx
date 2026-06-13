@@ -24,7 +24,35 @@ const orgSchema = {
   description: site.description,
   email: site.email,
   founder: { "@type": "Person", name: site.founder },
+  sameAs: [site.social.instagram, site.social.tiktok, site.social.linkedin],
 };
+
+/**
+ * Describes the SLICE app itself so Google can surface app rich results
+ * (category, price range, platforms). Free to start, with paid Silver/Gold/
+ * Platinum tiers up to $59.99/mo → AggregateOffer spanning $0–$59.99.
+ */
+const appSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: site.name,
+  applicationCategory: "FinanceApplication",
+  operatingSystem: "iOS, Android",
+  url: site.domain,
+  description: site.description,
+  offers: {
+    "@type": "AggregateOffer",
+    lowPrice: "0",
+    highPrice: "59.99",
+    priceCurrency: "USD",
+  },
+  publisher: { "@type": "Organization", name: site.legal.businessName },
+};
+
+// Optional config set in Netlify → Environment variables (VITE_ prefix = safe to
+// expose to the client). Empty/undefined → the corresponding tag is omitted.
+const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined;
+const GSC_TOKEN = import.meta.env.VITE_GSC_VERIFICATION as string | undefined;
 
 export const Route = createRootRoute({
   head: () => ({
@@ -34,6 +62,9 @@ export const Route = createRootRoute({
       { title: `${site.name} — ${site.tagline}` },
       { name: "description", content: site.description },
       { name: "theme-color", content: "#f97316" },
+      ...(GSC_TOKEN
+        ? [{ name: "google-site-verification", content: GSC_TOKEN }]
+        : []),
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -68,6 +99,22 @@ export const Route = createRootRoute({
         type: "application/ld+json",
         children: JSON.stringify(orgSchema),
       },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(appSchema),
+      },
+      // Google Analytics 4 — only emitted when VITE_GA_MEASUREMENT_ID is set.
+      ...(GA_ID
+        ? [
+            {
+              src: `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`,
+              async: true,
+            },
+            {
+              children: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`,
+            },
+          ]
+        : []),
       {
         // Supabase emails (e.g. the signup-confirmation link from the mobile
         // app) land on the Site URL root with the auth result in the URL

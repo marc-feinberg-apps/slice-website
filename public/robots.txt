@@ -2,4 +2,8 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://slice.marcfeinberg.com/sitemap.xml
+# Don't index auth/account flows — no SEO value, avoids thin/duplicate pages.
+Disallow: /auth/
+Disallow: /login
+
+Sitemap: https://slicemydebt.com/sitemap.xml
