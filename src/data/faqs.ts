@@ -43,7 +43,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "How many AI requests do I get, and how is the cost structured?",
-    a: "Each paid plan includes a daily allowance per AI tool: 30 requests per tool on Silver, 100 on Gold, and 250 on Platinum. The allowance covers tools like negotiation strategy and call scripts, and it resets every day — no per-use charges.",
+    a: "Each paid plan includes a daily allowance per AI tool: 25 requests per tool on Silver, 50 on Gold, and 250 on Platinum. The allowance covers tools like negotiation strategy and call scripts, and it resets every day — no per-use charges.",
   },
   {
     q: "Can I cancel anytime?",
