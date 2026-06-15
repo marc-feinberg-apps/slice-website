@@ -46,7 +46,7 @@ const matrix: Row[] = [
   { label: "AI negotiation strategy", free: false, silver: true, gold: true, platinum: true },
   { label: "AI call scripts (4 tones)", free: false, silver: true, gold: true, platinum: true },
   { label: "Zest AI Debt Coach", free: false, silver: true, gold: true, platinum: true },
-  { label: "AI requests per tool, daily", free: "—", silver: "30", gold: "100", platinum: "250" },
+  { label: "AI requests per tool, daily", free: "—", silver: "25", gold: "50", platinum: "250" },
   { label: "Book: Debt Settlements: Dirty Little Secrets", free: false, silver: true, gold: true, platinum: true },
   { label: "Weekly Zoom calls for debt-resolution coaching", free: false, silver: false, gold: true, platinum: true },
   { label: "Quarterly done-with-you creditor calls", free: false, silver: false, gold: false, platinum: true },

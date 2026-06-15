@@ -45,7 +45,7 @@ export const plans: Plan[] = [
       "AI negotiation strategy",
       "AI call scripts in 4 tones",
       "Zest AI Debt Coach",
-      "30 AI requests per tool, daily",
+      "25 AI requests per tool, daily",
       "Copy of our book Debt Settlements: Dirty Little Secrets",
     ],
   },
@@ -60,7 +60,7 @@ export const plans: Plan[] = [
     features: [
       "Everything in Silver",
       "Weekly Zoom calls for debt-resolution coaching and all things financial",
-      "100 AI requests per tool, daily",
+      "50 AI requests per tool, daily",
     ],
   },
   {

@@ -66,7 +66,7 @@ The site advertises a **Credit score tracker** (Free). The app ships that, **plu
 |---|---|---|
 | **AI call-script tones (4)** | The site says "customized call scripts" but doesn't mention the 4 selectable tones: Calm, Firm, Hardship, Short & Direct | `apps/mobile/app/ai/script/[id].tsx` |
 | **Yearly billing — 20% off (2 months free)** | The site shows monthly pricing only ($19/$49/$99). The app offers annual billing at $15.20/$39.20/$79.20 per month | `apps/mobile/app/pricing.tsx` |
-| **AI usage meter** | Per-tool daily request allowance is shown to the user (Silver 30 / Gold 100 / Platinum 250 per tool) | `apps/mobile/lib/tierBenefits.ts`, `AI_USAGE_FEATURES` in `sliceData.ts` |
+| **AI usage meter** | Per-tool daily request allowance is shown to the user (Silver 25 / Gold 50 / Platinum 250 per tool) | `apps/mobile/lib/tierBenefits.ts`, `AI_USAGE_FEATURES` in `sliceData.ts` |
 
 ---
 
