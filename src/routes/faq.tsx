@@ -23,7 +23,7 @@ export const Route = createFileRoute("/faq")({
       title: "FAQ",
       path: "/faq",
       description:
-        "Answers to common questions about SLICE: how it differs from settlement companies, guarantees, the calculator, Zest AI coach, pricing, and more.",
+        "Answers to common questions about SLICE: how it differs from settlement companies, guarantees, the calculator, Juici AI coach, pricing, and more.",
     });
     return {
       ...base,

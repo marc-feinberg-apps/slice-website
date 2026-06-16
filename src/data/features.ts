@@ -7,15 +7,15 @@ import {
   SlidersHorizontal,
   Goal,
   TrendingDown,
-  NotebookPen,
   Wallet,
   ListTodo,
   PiggyBank,
   BrainCircuit,
   PhoneCall,
+  PhoneOutgoing,
+  Banknote,
   GraduationCap,
   Bot,
-  UserRoundCheck,
 } from "lucide-react";
 
 export type Feature = {
@@ -77,6 +77,13 @@ export const features: Feature[] = [
     tier: "Free",
   },
   {
+    icon: Banknote,
+    title: "Monthly budget",
+    description:
+      "Map your income against your expenses each month to see exactly how much you can put toward settlements — and find the room to fund your plan faster.",
+    tier: "Free",
+  },
+  {
     icon: TrendingDown,
     title: "Snowball timeline",
     description:
@@ -84,8 +91,8 @@ export const features: Feature[] = [
     tier: "Free",
   },
   {
-    icon: NotebookPen,
-    title: "Call log & follow-up reminders",
+    icon: PhoneOutgoing,
+    title: "Creditor calls logging & follow-up reminders",
     description:
       "Log every creditor call with its outcome and notes, then schedule a follow-up — one week, two weeks, or a month out — so nothing slips.",
     tier: "Free",
@@ -127,16 +134,9 @@ export const features: Feature[] = [
   },
   {
     icon: Bot,
-    title: "Zest, your AI Debt Coach",
+    title: "Juici, your AI Debt Coach",
     description:
-      "Chat with Zest anytime for answers, encouragement, and next steps so you never feel stuck or alone.",
+      "Chat with Juici anytime for answers, encouragement, and next steps so you never feel stuck or alone.",
     tier: "Silver",
-  },
-  {
-    icon: UserRoundCheck,
-    title: "Founder coaching with Marc Feinberg",
-    description:
-      "Book guidance from SLICE founder Marc Feinberg and his network for mastermind and coaching support.",
-    tier: "Gold",
   },
 ];

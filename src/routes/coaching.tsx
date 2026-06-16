@@ -20,19 +20,12 @@ export const Route = createFileRoute("/coaching")({
       title: "Founder Coaching with Marc Feinberg",
       path: "/coaching",
       description:
-        "Book founder coaching with SLICE's Marc Feinberg. Get mastermind support, the Zest AI Debt Coach, and quarterly done-with-you creditor calls on Gold and Platinum.",
+        "Book founder coaching with SLICE's Marc Feinberg. Get mastermind support, the Juici AI Debt Coach, and quarterly done-with-you creditor calls on Gold and Platinum.",
     }),
   component: Coaching,
 });
 
 const offerings = [
-  {
-    icon: Star,
-    title: "1:1 founder coaching",
-    description:
-      "Sit down with Marc Feinberg for personalized strategy on your toughest creditors and your overall plan.",
-    tier: "Gold & Platinum",
-  },
   {
     icon: Users,
     title: "Mastermind & accountability",
@@ -42,9 +35,9 @@ const offerings = [
   },
   {
     icon: Bot,
-    title: "Zest AI Debt Coach",
+    title: "Juici AI Debt Coach",
     description:
-      "Between sessions, Zest answers questions 24/7, drafts scripts, and keeps your momentum going.",
+      "Between sessions, Juici answers questions 24/7, drafts scripts, and keeps your momentum going.",
     tier: "Silver and up",
   },
   {

@@ -30,8 +30,8 @@ export const faqs: Faq[] = [
     a: "Both are free. The What-If Simulator lets you drag a slider to see how changing your monthly savings moves your settlement date. The Savings Planner works in reverse — you pick a target date and it calculates the exact monthly amount you'd need to save to get there.",
   },
   {
-    q: "What is Zest, the AI Debt Coach?",
-    a: "Zest is SLICE's built-in AI assistant. It answers your questions, explains your numbers, drafts negotiation scripts, and keeps you motivated through every step of your program.",
+    q: "What is Juici, the AI Debt Coach?",
+    a: "Juici is SLICE's built-in AI assistant. It answers your questions, explains your numbers, drafts negotiation scripts, and keeps you motivated through every step of your program.",
   },
   {
     q: "Who is Marc Feinberg?",

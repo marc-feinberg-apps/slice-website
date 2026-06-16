@@ -118,7 +118,7 @@ SLICE does not guarantee that:
 
 ## 7. AI Features
 
-SLICE may include AI-powered features, including Zest AI Debt Coach, negotiation strategy suggestions, customized call scripts, letter drafts, and educational guidance.
+SLICE may include AI-powered features, including Juici AI Debt Coach, negotiation strategy suggestions, customized call scripts, letter drafts, and educational guidance.
 
 AI-generated content may be incomplete, inaccurate, outdated, or inappropriate for your specific situation. You should review all AI-generated content before using it.
 

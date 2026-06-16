@@ -44,7 +44,7 @@ export const plans: Plan[] = [
       "Everything in Free",
       "AI negotiation strategy",
       "AI call scripts in 4 tones",
-      "Zest AI Debt Coach",
+      "Juici AI Debt Coach",
       "25 AI requests per tool, daily",
       "Copy of our book Debt Settlements: Dirty Little Secrets",
     ],
