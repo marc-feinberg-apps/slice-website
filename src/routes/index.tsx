@@ -263,7 +263,7 @@ function CoachingSection() {
           </p>
           <ul className="mt-6 space-y-3">
             {[
-              "1:1 founder coaching sessions",
+              "Founder coaching sessions",
               "Mastermind & accountability",
               "Platinum: quarterly done-with-you creditor calls",
             ].map((t) => (

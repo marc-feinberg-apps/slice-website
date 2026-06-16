@@ -53,7 +53,7 @@ SLICE does not connect to your bank account or automatically pull your credit re
 
 ### C. AI Coach and Negotiation Script Information
 
-If you use AI features such as Zest AI Debt Coach, negotiation strategy suggestions, or customized call scripts, we may collect:
+If you use AI features such as Juici AI Debt Coach, negotiation strategy suggestions, or customized call scripts, we may collect:
 
 - Messages you send to the AI coach
 - AI-generated responses

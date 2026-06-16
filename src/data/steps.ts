@@ -28,6 +28,6 @@ export const steps: Step[] = [
     icon: HandCoins,
     title: "Negotiate & settle",
     description:
-      "Generate AI negotiation strategies and call scripts, lean on Zest and founder coaching, and settle your accounts one bite at a time.",
+      "Generate AI negotiation strategies and call scripts, lean on Juici and founder coaching, and settle your accounts one bite at a time.",
   },
 ];

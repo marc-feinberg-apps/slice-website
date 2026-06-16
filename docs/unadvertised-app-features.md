@@ -84,4 +84,4 @@ The site advertises a **Credit score tracker** (Free). The app ships that, **plu
 These appear in code but are **not** shipped features, so they're excluded from the list above:
 
 - **AI Dispute Letter Generator** — explicitly a placeholder in the UI ("Available in a future…"). `credit-repair.tsx`
-- **Zest AI Debt Coach** — advertised on the site (Silver+) and has a backend (`supabase/functions/zest-chat/`) + API method (`sendZestMessage`), but **no front-end UI exists** to use it. This is a site-vs-app gap in the *opposite* direction (advertised but unusable), tracked separately.
+- **Juici AI Debt Coach** (formerly "Zest") — advertised on the site (Silver+) and has a backend (`supabase/functions/zest-chat/`) + API method (`sendZestMessage`), but **no front-end UI exists** to use it. This is a site-vs-app gap in the *opposite* direction (advertised but unusable), tracked separately.

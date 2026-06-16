@@ -40,7 +40,7 @@ const details = [
     points: [
       "Generate AI negotiation strategies per creditor",
       "Use customized AI call scripts on every call",
-      "Lean on Zest AI coach and founder coaching",
+      "Lean on Juici AI coach and founder coaching",
     ],
   },
 ];
