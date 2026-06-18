@@ -80,9 +80,14 @@ function Coaching() {
                   className="h-20 w-20 rounded-full object-cover shadow-soft"
                 />
                 <div>
-                  <p className="text-xl font-extrabold text-navy-900">
+                  <a
+                    href="https://marcfeinberg.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xl font-extrabold text-navy-900 hover:text-brand-dark"
+                  >
                     Marc Feinberg
-                  </p>
+                  </a>
                   <p className="text-sm font-semibold text-brand-dark">
                     Founder & Debt Coach
                   </p>

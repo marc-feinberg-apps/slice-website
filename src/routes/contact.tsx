@@ -43,8 +43,7 @@ function Contact() {
               </h2>
             </div>
             <p className="mt-3 text-muted">
-              Be first in line when SLICE launches. Early members get priority
-              onboarding and special pricing.
+              Be first in line when SLICE launches.
             </p>
             <div className="mt-6">
               <LeadForm intent="waitlist" buttonLabel={cta.waitlist} />

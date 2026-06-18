@@ -289,9 +289,11 @@ function CoachingSection() {
               their financial future."
             </p>
             <div className="mt-6 flex items-center gap-4">
-              <div className="flex h-14 w-14 items-center justify-center rounded-full bg-brand text-xl font-extrabold text-white">
-                MF
-              </div>
+              <img
+                src="/assets/marc/marc-portrait.jpeg"
+                alt="Marc Feinberg"
+                className="h-14 w-14 rounded-full object-cover shadow-soft"
+              />
               <div>
                 <p className="font-extrabold text-navy-900">Marc Feinberg</p>
                 <p className="text-sm text-muted">Founder & Debt Coach, SLICE</p>
