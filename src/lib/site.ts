@@ -22,7 +22,7 @@ export const site = {
     address: "2007 Cove Ln., North Palm Beach, FL 33408",
     state: "Florida",
     venue: "Palm Beach County, Florida",
-    effectiveDate: "Coming soon",
+    effectiveDate: "June 23, 2026",
   },
 } as const;
 
