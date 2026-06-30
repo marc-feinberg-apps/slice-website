@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
+  Apple,
   ArrowRight,
   ShieldCheck,
   X,
@@ -7,11 +8,12 @@ import {
   Star,
   Quote,
   Sparkles,
+  Smartphone,
 } from "lucide-react";
 import { seo } from "../lib/seo";
-import { cta } from "../lib/site";
+import { cta, platforms, site } from "../lib/site";
 import { Container, Section, SectionHeading, Eyebrow } from "../components/primitives";
-import { LinkButton } from "../components/Button";
+import { AnchorButton, LinkButton } from "../components/Button";
 import { PhoneMockup } from "../components/PhoneMockup";
 import { Calculator } from "../components/Calculator";
 import { FeatureCard } from "../components/FeatureCard";
@@ -52,35 +54,47 @@ function Home() {
 /* ------------------------------------------------------------------ Hero */
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-orange-50 via-white to-white">
-      <div className="pointer-events-none absolute -right-40 -top-40 h-96 w-96 rounded-full bg-orange-200/40 blur-3xl" />
-      <Container className="relative grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-2 lg:gap-8 lg:py-24">
+    <section className="relative overflow-hidden border-b border-orange-100 bg-[linear-gradient(180deg,#fff7ed_0%,#ffffff_54%)]">
+      <Container className="relative grid items-center gap-12 py-14 sm:py-18 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10 lg:py-20">
         <div className="reveal flex flex-col items-start gap-6">
           <Eyebrow>
-            <Sparkles className="h-4 w-4" /> Keep the 25% — settle it yourself
+            <Sparkles className="h-4 w-4" /> Now available on iOS
           </Eyebrow>
           <h1 className="text-balance text-4xl font-extrabold leading-[1.05] tracking-tight text-navy-900 sm:text-5xl lg:text-6xl">
-            Reducing your debt{" "}
-            <span className="text-brand">one bite at a time.</span>
+            Settle your debt yourself with{" "}
+            <span className="text-brand">SLICE on iPhone.</span>
           </h1>
           <p className="max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
             Debt settlement companies charge around{" "}
             <strong className="text-navy-900">25% of your debt</strong> to do
-            what you can do yourself. SLICE gives you the tools to organize
-            creditors, set settlement targets, save monthly, and negotiate with
-            AI scripts and real coaching.
+            what you can do yourself. SLICE is live on iOS with tools to
+            organize creditors, set settlement targets, save monthly, and
+            negotiate with AI scripts and real coaching.
           </p>
           <p className="rounded-xl border-l-4 border-brand bg-orange-50 px-4 py-3 text-base font-bold leading-snug text-navy-900 sm:text-lg">
             Never pay fees to a debt settlement company —{" "}
             <span className="text-brand">settle your own debt with SLICE.</span>
           </p>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <LinkButton to="/pricing" size="lg">
-              {cta.start} <ArrowRight className="h-5 w-5" />
-            </LinkButton>
+          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+            <AnchorButton
+              href={site.appStoreUrl}
+              target="_blank"
+              rel="noreferrer"
+              size="lg"
+            >
+              <Apple className="h-5 w-5" /> {cta.download}
+            </AnchorButton>
             <LinkButton to="/how-it-works" variant="ghost" size="lg">
-              {cta.how}
+              {cta.how} <ArrowRight className="h-5 w-5" />
             </LinkButton>
+          </div>
+          <div className="flex flex-wrap items-center gap-3 text-sm font-bold">
+            <span className="inline-flex items-center gap-2 rounded-full border border-orange-200 bg-white px-4 py-2 text-navy-800 shadow-card">
+              <Apple className="h-4 w-4 text-brand" /> {platforms.ios.label} available now
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-orange-100 bg-orange-50 px-4 py-2 text-muted">
+              <Smartphone className="h-4 w-4 text-brand" /> {platforms.android.label} coming soon
+            </span>
           </div>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 pt-2 text-sm font-semibold text-muted">
             <span className="flex items-center gap-1.5">
@@ -95,8 +109,38 @@ function Hero() {
           </div>
         </div>
 
-        <div className="reveal flex justify-center lg:justify-end">
+        <div className="reveal relative flex justify-center pb-16 pt-10 lg:justify-center lg:pb-14 lg:pl-8 lg:pr-16 lg:pt-12">
+          <div className="absolute left-4 top-0 z-20 hidden rounded-2xl border border-orange-200 bg-white px-4 py-3 shadow-[0_18px_50px_-18px_rgba(249,115,22,0.75),0_0_0_6px_rgba(249,115,22,0.08)] lg:block">
+            <div className="flex items-start gap-3">
+              <span className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-brand text-white shadow-[0_0_24px_rgba(249,115,22,0.45)]">
+                <Apple className="h-4 w-4" />
+              </span>
+              <div>
+                <p className="text-xs font-bold uppercase text-brand-dark">
+                  Live app
+                </p>
+                <p className="text-sm font-extrabold text-navy-900">
+                  Build your plan today
+                </p>
+              </div>
+            </div>
+          </div>
           <PhoneMockup />
+          <div className="absolute bottom-2 right-2 z-20 hidden max-w-[230px] rounded-2xl border border-orange-200 bg-white px-4 py-3 shadow-[0_18px_50px_-18px_rgba(249,115,22,0.75),0_0_0_6px_rgba(249,115,22,0.08)] sm:block lg:right-0">
+            <div className="flex items-start gap-3">
+              <span className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-full bg-orange-50 text-brand shadow-[0_0_24px_rgba(249,115,22,0.35)]">
+                <Smartphone className="h-4 w-4" />
+              </span>
+              <div>
+                <p className="text-xs font-bold uppercase text-brand-dark">
+                  Platform status
+                </p>
+                <p className="mt-1 text-sm font-extrabold text-navy-900">
+                  iOS now. Android coming soon.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </Container>
     </section>

@@ -3,7 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 /**
  * Server-only Supabase client. Uses the service_role key, which bypasses RLS,
  * so this module must NEVER be imported into client code. It is only used from
- * TanStack Start server functions (e.g. src/lib/server/waitlist.ts).
+ * TanStack Start server functions (e.g. src/lib/server/contact.ts).
  *
  * Env (no VITE_ prefix — keeps these out of the client bundle):
  *   SUPABASE_URL

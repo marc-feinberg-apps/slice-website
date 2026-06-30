@@ -7,6 +7,7 @@ export const site = {
   tagline: "Reducing your debt one bite at a time.",
   pledge: "Never pay fees to a debt settlement company — settle your own debt with SLICE.",
   domain: "https://slicemydebt.com",
+  appStoreUrl: "https://apps.apple.com/ph/app/slice-debt-resolution/id6778427095",
   description:
     "SLICE is the debt resolution app that helps you organize creditors, calculate settlement targets, build a monthly savings plan, generate AI negotiation scripts, and book coaching — without paying a settlement company 25% of your debt.",
   email: "support@slicemydebt.com",
@@ -28,9 +29,20 @@ export const site = {
 
 export const cta = {
   start: "Start My Debt Program",
-  waitlist: "Join the Waitlist",
-  download: "Download the App",
+  contact: "Contact Support",
+  download: "Download on the App Store",
   how: "See How SLICE Works",
+} as const;
+
+export const platforms = {
+  ios: {
+    label: "iOS",
+    status: "available",
+  },
+  android: {
+    label: "Android",
+    status: "comingSoon",
+  },
 } as const;
 
 export const nav = [

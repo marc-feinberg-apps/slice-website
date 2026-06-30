@@ -1,19 +1,15 @@
 import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 import { Button } from "./Button";
-import { submitLead } from "../lib/server/waitlist";
+import { submitContact } from "../lib/server/contact";
 import { toast, toErrorMessage } from "../lib/toast";
 
 type Status = "idle" | "submitting" | "success";
 
-export function LeadForm({
-  intent = "waitlist",
-  withMessage = false,
-  buttonLabel = "Join the Waitlist",
+export function ContactForm({
+  buttonLabel = "Send message",
   dark = false,
 }: {
-  intent?: "waitlist" | "contact";
-  withMessage?: boolean;
   buttonLabel?: string;
   dark?: boolean;
 }) {
@@ -26,37 +22,25 @@ export function LeadForm({
     setStatus("submitting");
 
     try {
-      const res = await submitLead({
+      const res = await submitContact({
         data: {
           name: String(fd.get("name") ?? ""),
           email: String(fd.get("email") ?? ""),
-          intent,
           message: String(fd.get("message") ?? ""),
         },
       });
       if (res?.ok) {
         setStatus("success");
         form.reset();
-        toast.success(
-          intent === "contact" ? "Message sent! ✅" : "You're on the list! 🎉",
-          {
-            description:
-              intent === "contact"
-                ? "We'll get back to you within 2 business days."
-                : "We'll email you the moment SLICE is ready.",
-          },
-        );
+        toast.success("Message sent!", {
+          description: "We'll get back to you within 2 business days.",
+        });
       } else {
         setStatus("idle");
-        toast.error(
-          intent === "contact"
-            ? "Couldn't send your message"
-            : "Couldn't join the waitlist",
-          {
-            description: toErrorMessage(res?.error),
-            action: { label: "Try again", onClick: () => form.requestSubmit() },
-          },
-        );
+        toast.error("Couldn't send your message", {
+          description: toErrorMessage(res?.error),
+          action: { label: "Try again", onClick: () => form.requestSubmit() },
+        });
       }
     } catch (err) {
       setStatus("idle");
@@ -79,11 +63,9 @@ export function LeadForm({
         role="status"
       >
         <CheckCircle2 className="h-12 w-12 text-brand" />
-        <h3 className="text-xl font-extrabold">You're on the list! 🎉</h3>
+        <h3 className="text-xl font-extrabold">Thanks for reaching out.</h3>
         <p className={dark ? "text-white/75" : "text-muted"}>
-          {intent === "contact"
-            ? "Thanks for reaching out — we'll get back to you within 2 business days."
-            : "We'll email you the moment SLICE is ready for you. Welcome aboard."}
+          We'll get back to you within 2 business days.
         </p>
       </div>
     );
@@ -100,11 +82,11 @@ export function LeadForm({
     <form onSubmit={onSubmit} className="flex flex-col gap-4" noValidate>
       <div className="grid gap-4 sm:grid-cols-2">
         <div>
-          <label htmlFor="lf-name" className={labelCls}>
+          <label htmlFor="cf-name" className={labelCls}>
             Name
           </label>
           <input
-            id="lf-name"
+            id="cf-name"
             name="name"
             type="text"
             required
@@ -114,11 +96,11 @@ export function LeadForm({
           />
         </div>
         <div>
-          <label htmlFor="lf-email" className={labelCls}>
+          <label htmlFor="cf-email" className={labelCls}>
             Email
           </label>
           <input
-            id="lf-email"
+            id="cf-email"
             name="email"
             type="email"
             required
@@ -129,21 +111,19 @@ export function LeadForm({
         </div>
       </div>
 
-      {withMessage ? (
-        <div>
-          <label htmlFor="lf-message" className={labelCls}>
-            How can we help?
-          </label>
-          <textarea
-            id="lf-message"
-            name="message"
-            rows={4}
-            required
-            placeholder="Tell us what you need…"
-            className={inputCls}
-          />
-        </div>
-      ) : null}
+      <div>
+        <label htmlFor="cf-message" className={labelCls}>
+          How can we help?
+        </label>
+        <textarea
+          id="cf-message"
+          name="message"
+          rows={4}
+          required
+          placeholder="Tell us what you need..."
+          className={inputCls}
+        />
+      </div>
 
       <Button
         type="submit"
@@ -153,7 +133,7 @@ export function LeadForm({
       >
         {status === "submitting" ? (
           <>
-            <Loader2 className="h-5 w-5 animate-spin" /> Sending…
+            <Loader2 className="h-5 w-5 animate-spin" /> Sending...
           </>
         ) : (
           buttonLabel

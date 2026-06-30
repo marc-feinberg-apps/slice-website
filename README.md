@@ -3,7 +3,7 @@
 > Reducing your debt one bite at a time.
 
 The conversion-focused marketing site for **SLICE**, a debt-resolution app.
-Built to turn visitors into app users, waitlist signups, and paid subscribers —
+Built to turn visitors into iOS app users, support contacts, and paid subscribers —
 and polished enough to show investors and the App Store review team.
 
 ## Tech stack
@@ -41,40 +41,41 @@ src/
                      calculator, coaching, pricing, trust, FAQ, final CTA)
     how-it-works · features · pricing · coaching · faq · contact · privacy · terms
   components/         Reusable UI (Button, Navbar, Footer, Calculator,
-                     PricingCards, FaqAccordion, LeadForm, Logo, …)
+                     PricingCards, FaqAccordion, ContactForm, Logo, …)
   data/              Content as data: features, pricing, faqs, steps
   lib/
     site.ts          Brand config, nav, CTA labels (single source of truth)
     seo.ts           SEO/OpenGraph/Twitter meta helper
     calculator.ts    Pure settlement-math (unit-testable)
-    server/waitlist.ts  Lead-capture server function (placeholder)
+    server/contact.ts  Contact server function
 ```
 
 ## Editing content
 
 Most copy lives as data so it's easy to change without touching layout:
 
-- **Brand, nav, CTAs, contact email** → `src/lib/site.ts`
+- **Brand, nav, CTAs, contact email, app store URL** → `src/lib/site.ts`
 - **Feature cards & tiers** → `src/data/features.ts`
 - **Pricing plans** → `src/data/pricing.ts` (table matrix in `routes/pricing.tsx`)
 - **FAQs** (also powers FAQ JSON-LD) → `src/data/faqs.ts`
 - **Brand colors / fonts / animations** → `src/styles.css` (`@theme`)
 
-## Connecting the waitlist / contact form
+## Connecting the contact form
 
 The form posts to a TanStack Start **server function** at
-`src/lib/server/waitlist.ts`. It currently validates input and logs the lead.
-To go live, replace the `TODO` block in the `.handler()` with your backend:
+`src/lib/server/contact.ts`. It validates input and inserts contact messages
+into Supabase.
 
 ```ts
-// Supabase
-await supabase.from("leads").insert(data);
-
-// or Resend
-await resend.emails.send({ to: site.email, subject: "New SLICE lead", html });
+await supabase.from("leads").insert({
+  name,
+  email,
+  intent: "contact",
+  message,
+});
 ```
 
-The client (`src/components/LeadForm.tsx`) needs no changes.
+The client lives in `src/components/ContactForm.tsx`.
 
 ## SEO
 
