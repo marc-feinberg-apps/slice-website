@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, MessageCircle, Rocket } from "lucide-react";
+import { Mail, MessageCircle } from "lucide-react";
 import { seo } from "../lib/seo";
 import { Section } from "../components/primitives";
 import { PageHeader } from "../components/PageHeader";
-import { LeadForm } from "../components/LeadForm";
+import { ContactForm } from "../components/ContactForm";
 import { site, cta } from "../lib/site";
 
 export const Route = createFileRoute("/contact")({
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/contact")({
       title: "Contact & Support",
       path: "/contact",
       description:
-        "Join the SLICE waitlist or contact our support team. We respond within 2 business days.",
+        "Contact the SLICE support team. We respond within 2 business days.",
     }),
   component: Contact,
 });
@@ -27,30 +27,11 @@ function Contact() {
           </>
         }
         title="We're here to help."
-        subtitle="Join the waitlist to get early access, or send us a message — we reply within 2 business days."
+        subtitle="Questions about the app, your account, pricing, or coaching? Send us a message and we'll reply within 2 business days."
       />
 
       <Section className="bg-white">
-        <div className="grid gap-8 lg:grid-cols-2">
-          {/* Waitlist */}
-          <div className="reveal rounded-[1.5rem] border border-orange-100 bg-gradient-to-br from-orange-50 to-white p-7 shadow-card sm:p-8">
-            <div className="flex items-center gap-3">
-              <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand text-white">
-                <Rocket className="h-6 w-6" />
-              </span>
-              <h2 className="text-2xl font-extrabold text-navy-900">
-                {cta.waitlist}
-              </h2>
-            </div>
-            <p className="mt-3 text-muted">
-              Be first in line when SLICE launches.
-            </p>
-            <div className="mt-6">
-              <LeadForm intent="waitlist" buttonLabel={cta.waitlist} />
-            </div>
-          </div>
-
-          {/* Contact */}
+        <div className="mx-auto max-w-3xl">
           <div className="reveal rounded-[1.5rem] border border-orange-100 bg-white p-7 shadow-card sm:p-8">
             <div className="flex items-center gap-3">
               <span className="flex h-11 w-11 items-center justify-center rounded-2xl bg-navy-900 text-white">
@@ -65,24 +46,20 @@ function Contact() {
               hear from you.
             </p>
             <div className="mt-6">
-              <LeadForm
-                intent="contact"
-                withMessage
-                buttonLabel="Send message"
-              />
+              <ContactForm buttonLabel={cta.contact} />
             </div>
           </div>
-        </div>
 
-        <div className="reveal mt-10 text-center text-muted">
-          Prefer email? Reach us anytime at{" "}
-          <a
-            href={`mailto:${site.email}`}
-            className="font-bold text-brand underline-offset-4 hover:underline"
-          >
-            {site.email}
-          </a>
-          .
+          <div className="reveal mt-10 text-center text-muted">
+            Prefer email? Reach us anytime at{" "}
+            <a
+              href={`mailto:${site.email}`}
+              className="font-bold text-brand underline-offset-4 hover:underline"
+            >
+              {site.email}
+            </a>
+            .
+          </div>
         </div>
       </Section>
     </>

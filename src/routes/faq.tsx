@@ -50,7 +50,7 @@ function Faq() {
       <Section className="bg-white">
         <FaqAccordion items={faqs} />
       </Section>
-      <CtaBand title="Still have questions?" subtitle="Start free or join the waitlist — there's no risk and no settlement fees." />
+      <CtaBand title="Still have questions?" subtitle="Download SLICE on iOS or contact support — there's no risk and no settlement fees." />
     </>
   );
 }
