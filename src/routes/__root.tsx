@@ -1,4 +1,5 @@
-import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
+import { HeadContent, Scripts, createRootRoute, Link } from "@tanstack/react-router";
+import { SearchX } from "lucide-react";
 
 import appCss from "../styles.css?url";
 import { site } from "../lib/site";
@@ -6,6 +7,8 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { ScrollReveal } from "../components/ScrollReveal";
 import { Toaster } from "../components/Toaster";
+import { Container, Eyebrow } from "../components/primitives";
+import { LinkButton } from "../components/Button";
 
 /**
  * Inlined verbatim into <head>, so it must be self-contained vanilla JS that is
@@ -54,7 +57,47 @@ const appSchema = {
 const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined;
 const GSC_TOKEN = import.meta.env.VITE_GSC_VERIFICATION as string | undefined;
 
+function NotFound() {
+  return (
+    <section className="bg-gradient-to-b from-orange-50 to-white py-20 sm:py-32">
+      <Container className="max-w-2xl">
+        <div className="flex flex-col items-center text-center">
+          <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-orange-100 text-brand">
+            <SearchX className="h-10 w-10" />
+          </div>
+
+          <div className="mt-8">
+            <Eyebrow>404 — Not Found</Eyebrow>
+          </div>
+
+          <h1 className="mt-5 text-balance text-3xl font-extrabold tracking-tight text-navy-900 sm:text-4xl">
+            Page not found
+          </h1>
+
+          <p className="mx-auto mt-5 max-w-md text-lg leading-relaxed text-muted">
+            We couldn't find the page you're looking for. It may have been moved
+            or the link might be incorrect.
+          </p>
+
+          <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row">
+            <LinkButton to="/" variant="primary" size="lg">
+              Back to home
+            </LinkButton>
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center rounded-xl px-6 py-3 text-base font-semibold text-navy-700 transition-colors hover:text-brand"
+            >
+              Contact support
+            </Link>
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}
+
 export const Route = createRootRoute({
+  notFoundComponent: NotFound,
   head: () => ({
     meta: [
       { charSet: "utf-8" },

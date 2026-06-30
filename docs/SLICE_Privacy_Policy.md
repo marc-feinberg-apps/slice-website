@@ -1,6 +1,6 @@
 # Privacy Policy for SLICE
 
-**Effective Date:** [Date of Publish]  
+**Effective Date:** June 30, 2026  
 **App Name:** SLICE — Debt Resolution App  
 **Company/Owner:** [Marc Feinberg]  
 **Contact Email:** [slice.cares@slice.com]  
@@ -105,6 +105,16 @@ We may collect basic technical information to operate and improve the app, such 
 - Push notification preferences
 
 We do not use this information to sell your personal information.
+
+### G. Device Permissions and Support Attachments
+
+When you use the Contact Support or Feedback feature, SLICE may request access to your device camera and photo library. This access is used only to let you attach photos to a support request or feedback submission. Specifically:
+
+- Camera access — lets you take a new photo to attach to a support ticket
+- Photo library access — lets you select an existing photo from your device to attach to a support ticket
+- Attached photos are uploaded to secure private storage and linked to your support ticket only
+- Photos are not used for advertising, profiling, or any purpose other than responding to your support request
+- You can use the Contact Support screen without granting camera or photo library access — attachments are optional
 
 ---
 
@@ -266,6 +276,7 @@ Potential service providers may include:
 - Sentry or similar crash reporting tools
 - Email or notification providers
 - Scheduling or calendar providers
+- Expo ImagePicker (camera and photo library access for support attachments)
 
 ---
 
